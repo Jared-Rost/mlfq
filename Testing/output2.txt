@@ -1,0 +1,240 @@
+Using mlfq with 1 CPUs and 200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 65127.500000 usec 
+	Type 1: 197834.941176 usec 
+	Type 2: 801442.321429 usec 
+	Type 3: 764429.448276 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 1627.500000 usec 
+	Type 1: 1570.117647 usec 
+	Type 2: 2151.821429 usec 
+	Type 3: 1791.482759 usec 
+Using mlfq with 1 CPUs and 800 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 65193.050000 usec 
+	Type 1: 199301.235294 usec 
+	Type 2: 807023.535714 usec 
+	Type 3: 767200.896552 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 1318.350000 usec 
+	Type 1: 1150.058824 usec 
+	Type 2: 1693.214286 usec 
+	Type 3: 1435.517241 usec 
+Using mlfq with 1 CPUs and 1600 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 62186.550000 usec 
+	Type 1: 197703.176471 usec 
+	Type 2: 783512.535714 usec 
+	Type 3: 748419.655172 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 1250.050000 usec 
+	Type 1: 1149.705882 usec 
+	Type 2: 1653.214286 usec 
+	Type 3: 1486.103448 usec 
+Using mlfq with 1 CPUs and 3200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 62500.200000 usec 
+	Type 1: 196301.764706 usec 
+	Type 2: 779521.500000 usec 
+	Type 3: 748530.827586 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 1341.850000 usec 
+	Type 1: 1519.411765 usec 
+	Type 2: 1767.928571 usec 
+	Type 3: 1517.103448 usec 
+Using mlfq with 2 CPUs and 200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 31663.850000 usec 
+	Type 1: 101247.529412 usec 
+	Type 2: 399217.928571 usec 
+	Type 3: 375284.206897 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 699.400000 usec 
+	Type 1: 697.941176 usec 
+	Type 2: 920.535714 usec 
+	Type 3: 806.241379 usec 
+Using mlfq with 2 CPUs and 800 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 32085.600000 usec 
+	Type 1: 101170.411765 usec 
+	Type 2: 398278.535714 usec 
+	Type 3: 376769.448276 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 648.350000 usec 
+	Type 1: 644.411765 usec 
+	Type 2: 887.714286 usec 
+	Type 3: 846.241379 usec 
+Using mlfq with 2 CPUs and 1600 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 32040.800000 usec 
+	Type 1: 100699.176471 usec 
+	Type 2: 395060.892857 usec 
+	Type 3: 372633.482759 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 631.950000 usec 
+	Type 1: 632.470588 usec 
+	Type 2: 856.892857 usec 
+	Type 3: 740.448276 usec 
+Using mlfq with 2 CPUs and 3200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 32452.900000 usec 
+	Type 1: 103678.000000 usec 
+	Type 2: 401638.035714 usec 
+	Type 3: 380578.068966 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 641.400000 usec 
+	Type 1: 648.647059 usec 
+	Type 2: 872.035714 usec 
+	Type 3: 789.034483 usec 
+Using mlfq with 8 CPUs and 200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 11216.650000 usec 
+	Type 1: 39009.470588 usec 
+	Type 2: 161153.928571 usec 
+	Type 3: 156697.172414 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 262.050000 usec 
+	Type 1: 217.235294 usec 
+	Type 2: 331.500000 usec 
+	Type 3: 317.413793 usec 
+Using mlfq with 8 CPUs and 800 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 10411.350000 usec 
+	Type 1: 34405.764706 usec 
+	Type 2: 160935.821429 usec 
+	Type 3: 155224.206897 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 285.100000 usec 
+	Type 1: 277.941176 usec 
+	Type 2: 347.321429 usec 
+	Type 3: 319.137931 usec 
+Using mlfq with 8 CPUs and 1600 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 11336.600000 usec 
+	Type 1: 35573.117647 usec 
+	Type 2: 160964.464286 usec 
+	Type 3: 156104.448276 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 316.250000 usec 
+	Type 1: 297.647059 usec 
+	Type 2: 390.285714 usec 
+	Type 3: 352.517241 usec 
+Using mlfq with 8 CPUs and 3200 S time.
+
+
+Average turnaround time per type:
+
+
+	Type 0: 10423.650000 usec 
+	Type 1: 33926.764706 usec 
+	Type 2: 163013.785714 usec 
+	Type 3: 157986.068966 usec 
+
+
+
+Average response time per type:
+
+
+	Type 0: 254.700000 usec 
+	Type 1: 244.000000 usec 
+	Type 2: 292.500000 usec 
+	Type 3: 292.827586 usec 
