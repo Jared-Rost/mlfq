@@ -1,25 +1,126 @@
-## How to run
+# MLFQ Scheduler Simulator
 
-compile: make
-run: ./mlfq {num CPUS} {S time in microseconds} {txt file name}
-example: ./mlfq 1 200 tasks.txt
+A multi-threaded Multi-Level Feedback Queue (MLFQ) scheduler implementation in C that simulates CPU task scheduling with configurable parameters.
 
-## Table
+## Overview
 
-### Turnaround time
+This project implements a sophisticated MLFQ scheduler that manages task execution across multiple CPU threads.  The scheduler dynamically adjusts task priorities based on their behavior and execution patterns, providing an educational demonstration of operating system scheduling concepts.
 
-| Turnaround Time | **1 CPU, 200**     | **1 CPU, 800**     | **1 CPU, 1600**    | **1 CPU, 3200**    | **2 CPUs, 200**    | **2 CPUs, 800**    | **2 CPUs, 1600**   | **2 CPUs, 3200**   | **8 CPUs, 200**    | **8 CPUs, 800**    | **8 CPUs, 1600**   | **8 CPUs, 3200**   |
-| --------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| **Type 0**      | 64763.200000 usec  | 65131.850000 usec  | 65502.050000 usec  | 63021.100000 usec  | 32073.400000 usec  | 39268.900000 usec  | 34090.600000 usec  | 32865.100000 usec  | 10309.850000 usec  | 10424.450000 usec  | 10765.000000 usec  | 11220.700000 usec  |
-| **Type 1**      | 195136.588235 usec | 196104.470588 usec | 201901.529412 usec | 192350.764706 usec | 102519.529412 usec | 105398.705882 usec | 110643.588235 usec | 109373.823529 usec | 34889.235294 usec  | 34747.058824 usec  | 35237.058824 usec  | 39159.529412 usec  |
-| **Type 2**      | 804302.750000 usec | 807486.892857 usec | 799403.178571 usec | 791165.714286 usec | 401037.285714 usec | 408470.107143 usec | 405247.321429 usec | 448780.357143 usec | 159513.107143 usec | 160972.857143 usec | 158380.142857 usec | 174653.142857 usec |
-| **Type 3**      | 775002.758621 usec | 772682.137931 usec | 763448.586207 usec | 757939.931034 usec | 380387.379310 usec | 383284.931034 usec | 384271.068966 usec | 422362.103448 usec | 155341.827586 usec | 153837.344828 usec | 153593.206897 usec | 165909.482759 usec |
+### Key Features
 
-### Response time
+- **Multi-level Priority Queues**: Four priority levels for dynamic task management
+- **Multi-CPU Support**: Configurable number of CPU threads for parallel task execution
+- **Priority Boost Mechanism**: Periodic promotion of all tasks to prevent starvation
+- **I/O Simulation**: Tasks can simulate I/O operations with configurable probabilities
+- **Performance Metrics**: Tracks turnaround time and response time per task type
 
-| Response Time | **1 CPU, 200**   | **1 CPU, 800**   | **1 CPU, 1600**  | **1 CPU, 3200**  | **2 CPUs, 200** | **2 CPUs, 800**  | **2 CPUs, 1600** | **2 CPUs, 3200** | **8 CPUs, 200** | **8 CPUs, 800** | **8 CPUs, 1600** | **8 CPUs, 3200** |
-| ------------- | ---------------- | ---------------- | ---------------- | ---------------- | --------------- | ---------------- | ---------------- | ---------------- | --------------- | --------------- | ---------------- | ---------------- |
-| **Type 0**    | 1381.950000 usec | 1383.450000 usec | 1296.450000 usec | 1246.900000 usec | 645.700000 usec | 1039.050000 usec | 657.100000 usec  | 646.400000 usec  | 230.000000 usec | 236.100000 usec | 372.700000 usec  | 366.800000 usec  |
-| **Type 1**    | 1290.000000 usec | 1299.117647 usec | 1785.470588 usec | 1179.470588 usec | 624.352941 usec | 807.411765 usec  | 678.588235 usec  | 671.058824 usec  | 240.411765 usec | 215.823529 usec | 322.823529 usec  | 429.058824 usec  |
-| **Type 2**    | 1742.964286 usec | 1780.071429 usec | 2044.642857 usec | 1674.607143 usec | 912.642857 usec | 1370.964286 usec | 899.214286 usec  | 863.464286 usec  | 299.178571 usec | 289.035714 usec | 441.428571 usec  | 424.821429 usec  |
-| **Type 3**    | 1510.862069 usec | 1576.379310 usec | 2054.034483 usec | 1591.344828 usec | 746.448276 usec | 1029.862069 usec | 757.689655 usec  | 752.000000 usec  | 275.448276 usec | 273.034483 usec | 423.206897 usec  | 390.206897 usec  |
+## How It Works
+
+The scheduler implements several key components:
+
+- **Reader Thread**: Parses task files and introduces tasks into the system
+- **Dispatcher Thread**: Signals CPU threads when tasks are available
+- **Scheduler Thread**: Manages priority queues and implements the priority boost mechanism
+- **CPU Threads**: Execute tasks according to MLFQ rules
+
+### Scheduling Rules
+
+1. Tasks start at the highest priority queue (Queue 1)
+2. Each task runs for a quantum of 50 microseconds
+3. After running for 200 microseconds total, tasks move to a lower priority queue
+4. Every S microseconds, all tasks are boosted back to Queue 1
+5. Tasks with I/O operations may yield their quantum early
+
+## Building and Running
+
+### Compilation
+
+```bash
+make
+```
+
+### Usage
+
+```bash
+./mlfq <num_CPUs> <S_time_microseconds> <task_file>
+```
+
+**Parameters:**
+- `num_CPUs`: Number of CPU threads to simulate (1-8)
+- `S_time_microseconds`: Time interval for priority boost (in microseconds)
+- `task_file`: Path to the task specification file
+
+**Example:**
+```bash
+./mlfq 1 200 tasks.txt
+```
+
+### Task File Format
+
+The task file should contain one entry per line: 
+
+```
+<task_name> <type> <length_usec> <io_probability>
+DELAY <milliseconds>
+```
+
+**Task Parameters:**
+- `task_name`: Unique identifier for the task
+- `type`: Task classification (0-3)
+- `length_usec`: Total execution time in microseconds
+- `io_probability`: Percentage chance (0-100) of performing I/O
+
+**Example Task File:**
+```
+task1 0 1000 10
+task2 1 2000 25
+DELAY 100
+task3 2 5000 50
+```
+
+## Performance Metrics
+
+The simulator outputs two key metrics:
+
+### Turnaround Time
+Total time from task arrival to completion (microseconds)
+
+### Response Time
+Time from task arrival to first CPU scheduling (microseconds)
+
+Both metrics are calculated and averaged per task type.
+
+## Benchmark Results
+
+### Turnaround Time
+
+| Task Type | 1 CPU, 200μs | 1 CPU, 800μs | 2 CPUs, 200μs | 8 CPUs, 200μs |
+|-----------|--------------|--------------|---------------|---------------|
+| Type 0    | 64,763. 20    | 65,131.85    | 32,073.40     | 10,309.85     |
+| Type 1    | 195,136.59   | 196,104.47   | 102,519.53    | 34,889.23     |
+| Type 2    | 804,302.75   | 807,486.89   | 401,037.29    | 159,513.18    |
+| Type 3    | 775,002.76   | 772,682.14   | 380,387.38    | 155,341.86    |
+
+### Response Time
+
+| Task Type | 1 CPU, 200μs | 1 CPU, 800μs | 2 CPUs, 200μs | 8 CPUs, 200μs |
+|-----------|--------------|--------------|---------------|---------------|
+| Type 0    | 1,381.95     | 1,383.45     | 645.70        | 230.00        |
+| Type 1    | 1,290.00     | 1,299.12     | 624.35        | 240.41        |
+| Type 2    | 1,742.96     | 1,780.07     | 912.64        | 299.18        |
+| Type 3    | 1,510.86     | 1,576.38     | 746.45        | 275.45        |
+
+## Implementation Details
+
+- **Language**: C (98.3%)
+- **Threading**:  POSIX threads (pthread)
+- **Queue Implementation**: TAILQ from `sys/queue.h`
+- **Synchronization**: Mutexes and condition variables
+- **Time Management**: `clock_gettime()` for microsecond precision
+
+## Technical Specifications
+
+- **Quantum Length**: 50 microseconds
+- **Time Allotment**: 200 microseconds per priority level
+- **Priority Levels**: 4 (1 = highest, 4 = lowest)
+- **Max Task Name Size**: 100 characters
